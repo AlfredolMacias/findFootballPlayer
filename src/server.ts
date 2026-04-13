@@ -6,7 +6,7 @@ import { playersRoute } from './routes/players';
 import { gameRouter } from './routes/game';
 import { errorHandler } from './middleware/error.middleware';
 export const app = express()
-console.log(process.env.DATABASE_URL)
+console.log("DB URL: ",process.env.DATABASE_URL)
 
 app.use(cors({
   origin: [
