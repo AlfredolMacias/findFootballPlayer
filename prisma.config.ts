@@ -1,18 +1,24 @@
-import "dotenv/config";
+import * as dotenv from 'dotenv';
 import { defineConfig } from "prisma/config";
 
-// Añade un log temporal para depurar en Railway (verás esto en los Build Logs)
-if (!process.env.DATABASE_URL) {
-  console.warn("⚠️ Advertencia: DATABASE_URL no está definida en el entorno.");
+// Forzamos la carga del archivo .env (útil para local) 
+// y verificamos el entorno de Railway
+dotenv.config();
+
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  // Este log saldrá en tus Runtime Logs de Railway si falla
+  console.error("CRITICAL: DATABASE_URL is missing from process.env");
 }
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
-   migrations: {
+  migrations: {
     path: "prisma/migrations",
     seed: "ts-node prisma/seed.ts",
   },
   datasource: {
-    url: process.env.DATABASE_URL || "", // Asegura que al menos sea un string vacío y no undefined
+    url: databaseUrl || "", 
   },
 });
