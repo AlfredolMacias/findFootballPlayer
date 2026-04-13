@@ -8,8 +8,12 @@ import { errorHandler } from './middleware/error.middleware';
 export const app = express()
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: [
+    'http://localhost:3001',
+    'https://findfootballplayer.vercel.app'
+  ],
   credentials: true
+
 }));
 
 app.use(express.json())
