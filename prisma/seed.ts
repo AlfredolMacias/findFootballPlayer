@@ -66,7 +66,7 @@ async function main(){
             jerseyNumber: p.number ?? 0,
             yearsActive: p.years_exp ?? 0,
             age: p.age ?? 0,
-            teamId: teamMap[p.team] ?? 389
+            teamId: teamMap[p.team] ?? 33
         })),
     skipDuplicates: true
     });
