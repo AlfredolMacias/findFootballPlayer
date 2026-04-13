@@ -25,11 +25,10 @@ app.use(limiter);
 app.use("/api/players", playersRoute)
 app.use("/api/game", gameRouter)
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000
 
-if(process.env.NODE_ENV != "test"){
-    app.listen(PORT, () => {
-        console.log("Server runnning on http://localhost:"+ PORT);
-    })
-}
-    app.use(errorHandler)
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`)
+})
+
+app.use(errorHandler)
