@@ -8,7 +8,7 @@
   "scripts": {
     "build": "prisma generate && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "DATABASE_URL=$DATABASE_URL prisma migrate deploy && node dist/server.js",
+    "start": "ls -R dist && node dist/src/server.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
