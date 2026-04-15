@@ -180,6 +180,6 @@ export async function makeGuessService(gameId: number, playerId: number){
         isWinner,
         score,
         isFinished: guessCount == 5 ? true : false,
-        secretPlayer: secret?.name
+        secretPlayer: guessCount == 5 ? secret?.name: ""
     })
 }
