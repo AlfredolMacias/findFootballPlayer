@@ -1,98 +1,187 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🏈 NFL Wordle
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A fullstack Wordle-style game where users guess an NFL player based on clues like team, position, jersey number, conference and division.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🚀 Live Demo
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+* Frontend: [https://findfootballplayer.vercel.app](https://findfootballplayer.vercel.app)
+* Backend API: [https://findfootballplayer.up.railway.app](https://findfootballplayer.up.railway.app)
 
-## Project setup
+---
+
+## 🎯 Features
+
+* 🔍 Player search with autocomplete
+* 🎮 Wordle-style guessing mechanics
+* 📊 Hint system (correct, close, wrong)
+* ⚡ Keyboard navigation (↑ ↓ Enter)
+* 🛡 Rate limiting & security middleware
+* 🧪 Automated tests (Jest + Supertest)
+
+---
+
+## 🧱 Tech Stack
+
+### Backend
+
+* Node.js
+* Express
+* Prisma ORM
+* PostgreSQL
+
+### Frontend
+
+* Next.js
+* React
+* Tailwind CSS
+
+### DevOps
+
+* Railway (Backend + DB)
+* Vercel (Frontend)
+
+---
+
+## 🧠 How It Works
+
+1. A random player is selected as the secret.
+2. The user makes guesses via autocomplete search.
+3. The backend compares attributes:
+
+   * Team
+   * Position
+   * Jersey number
+   * Team Conference
+   * Team Division
+     
+4. Hints are returned:
+
+   * 🟢 Correct
+   * 🟡 Higher / Lower
+   * ⚫ Wrong
+5. Score is calculated based on attempts.
+
+---
+
+## 📦 Installation (Local)
+
+### 1. Clone repo
 
 ```bash
-$ npm install
+git clone https://github.com/AlfredolMacias/findFootballPlayer.git
 ```
 
-## Compile and run the project
+### 2. Backend setup
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+cd backend
+npm install
 ```
 
-## Run tests
+Create `.env`:
+
+```env
+DATABASE_URL=postgresql://...
+```
+
+Run migrations:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npx prisma migrate dev
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Start server:
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+### 3. Frontend setup
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+cd frontend
+npm install
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Create `.env.local`:
 
-## Support
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Run:
 
-## Stay in touch
+```bash
+npm run dev
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
+## 🧪 Running Tests
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+npm test
+```
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+ ├── controllers
+ ├── services
+ ├── routes
+ ├── validations
+ ├── middleware
+ ├── utils
+ ├── lib
+```
+
+---
+
+## 🧠 What I Learned
+
+* Designing REST APIs
+* Database modeling with Prisma
+* Building interactive UI with React
+* Implementing game logic
+* Writing automated tests
+* Deploying fullstack apps
+
+---
+
+## 📸 Screenshots
+
+![Game](./public/screenshots/start_new_game.png)
+![Guess](./public/screenshots/guessing.png)
+![Game Won](./public/screenshots/game_won.png)
+![Game Lost](./public/screenshots/game_lost.png)
+
+---
+
+## 🔮 Future Improvements
+
+* User authentication
+* Global rankings
+* More sports (NBA, Soccer)
+* Dark mode
+* Animations
+
+---
+
+## 👤 Author
+
+Alfredo Loeza Macias [www.linkedin.com/in/alfredo-loeza-macias]
+
+
+
+---
+
+## ⭐ If you like this project
+
+Give it a star on GitHub!
